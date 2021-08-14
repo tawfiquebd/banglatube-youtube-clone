@@ -4,4 +4,6 @@ if(!isset($_POST['uploadButton']))    {
     exit();
 }
 
+$videoUploadData = new VideoUploadData($_POST["fileInput"], $_POST["titleInput"], $_POST["descriptionInput"], $_POST["privacyInput"], $_POST["categoryInput"], "REPLACE-THIS");
+
 ?>

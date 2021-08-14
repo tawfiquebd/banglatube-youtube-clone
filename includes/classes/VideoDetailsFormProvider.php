@@ -57,7 +57,7 @@ class VideoDetailsFormProvider{
         $query = $this->con->prepare("SELECT * FROM categories");
         $query->execute();
         $html = "<div class='form-group'>
-					<select class='form-control' name='privacyInput'>";
+					<select class='form-control' name='categoryInput'>";
         while($row = $query->fetch(PDO::FETCH_ASSOC)){
             $id = $row['id'];
             $name = $row['name'];
