@@ -84,6 +84,7 @@ class VideoProcessor{
     }
 
     public function convertVideoToMp4($tempFilePath, $finalFilePath){
+        // ffmpeg directory in project
         $cmd = "$this->ffmpegPath";
         $outputLog = array();
         exec(escapeshellcmd($cmd) . " -i $tempFilePath -c copy $finalFilePath 2>&1", $outputLog, $returnCode);
