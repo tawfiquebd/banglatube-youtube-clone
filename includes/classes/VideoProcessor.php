@@ -32,7 +32,12 @@ class VideoProcessor{
             }
 
             if(!$this->convertVideoToMp4($tempFilePath, $finalFilePath)){
-                echo "Upload failed!";
+                echo "Converting failed!";
+                return false;
+            }
+
+            if(!$this->deleteFile($tempFilePath)){
+                echo "Delete failed!";
                 return false;
             }
 
@@ -95,6 +100,15 @@ class VideoProcessor{
             }
             return false;
         }
+        return true;
+    }
+
+    private function deleteFile($tempFilePath){
+        if(!unlink($tempFilePath)){
+            echo "Could not delete file <br />";
+            return false;
+        }
+
         return true;
     }
 
