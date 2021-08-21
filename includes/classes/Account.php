@@ -13,6 +13,7 @@ class Account {
         $this->validateLastName($lastName);
         $this->validateUsername($username);
         $this->validateEmails($email, $email2);
+        $this->validatePasswords($password, $password2);
     }
 
     private function validateFirstName($firstName){
@@ -59,6 +60,24 @@ class Account {
 
         if($query->rowCount() != 0) {
             array_push($this->errorArray, Constants::$emailTaken);
+        }
+    }
+
+    private function validatePasswords($password, $password2){
+        if ($password != $password2) {
+            array_push($this->errorArray, Constants::$passwordsDoNotMatch);
+            return;
+        }
+
+        // If except [^A-Za-z0-9] these characters found, it will show an error
+        if(preg_match("/[^A-Za-z0-9]/", $password)) {
+            array_push($this->errorArray, Constants::$passwordNotAlphanumeric);
+            return;
+        }
+
+        if (strlen($password) > 25 || strlen($password) < 5) {
+            array_push($this->errorArray, Constants::$passwordLength);
+            return;
         }
     }
 
