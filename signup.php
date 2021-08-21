@@ -1,5 +1,23 @@
 <?php
 require_once("includes/config.php");
+require_once("includes/classes/FormSanitizer.php");
+
+
+if(isset($_POST['submitButton'])){
+    $firstName = FormSanitizer::sanitizeFormString($_POST['firstName']);
+    $lastName = FormSanitizer::sanitizeFormString($_POST['lastName']);
+
+    $username = FormSanitizer::sanitizeFormUsername($_POST['username']);
+
+    $email = FormSanitizer::sanitizeFormEmail($_POST['email']);
+    $email2 = FormSanitizer::sanitizeFormEmail($_POST['email2']);
+
+    $password = FormSanitizer::sanitizeFormPassword($_POST['password']);
+    $password2 = FormSanitizer::sanitizeFormPassword($_POST['password2']);
+
+
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,7 +43,7 @@ require_once("includes/config.php");
         </div>
 
         <div class="loginForm">
-            <form action="signin.php" method="POST">
+            <form action="signup.php" method="POST">
 
                 <input type="text" name="firstName" placeholder="First name" autocomplete="off" required>
                 <input type="text" name="lastName" placeholder="Last name" autocomplete="off" required>
