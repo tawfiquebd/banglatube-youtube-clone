@@ -14,6 +14,17 @@ class Account {
         $this->validateUsername($username);
         $this->validateEmails($email, $email2);
         $this->validatePasswords($password, $password2);
+
+        if(empty($this->errorArray)) {
+            return $this->insertUserDetails($firstName, $lastName, $username, $email, $password);
+        }
+        else {
+            return false;
+        }
+    }
+
+    public function insertUserDetails($firstName, $lastName, $username, $email, $password) {
+
     }
 
     private function validateFirstName($firstName){
