@@ -18,7 +18,7 @@ class VideoPlayer {
         return "<video class='videoPlayer' controls $autoPlay>
                     <source src='$filePath' type='video/mp4'>
                     Your browser does not support the video tag
-                </video";
+                </video>";
     }
 
 }

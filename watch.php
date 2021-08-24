@@ -20,5 +20,9 @@ $video = new Video($con, $_GET['id'], $userLoggedInObj);    // video object crea
 
 </div>
 
+<div class="suggestions">
+
+</div>
+
 
 <?php require_once("includes/footer.php"); ?>
