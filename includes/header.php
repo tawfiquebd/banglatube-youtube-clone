@@ -3,7 +3,7 @@
     require_once("includes/classes/User.php");
 
     $usernameLoggedIn = isset($_SESSION['userLoggedIn']) ? $_SESSION['userLoggedIn'] : "";
-    $usernameLoggedInObj = new User($con, $usernameLoggedIn);
+    $userLoggedInObj = new User($con, $usernameLoggedIn);
 ?>
 <!DOCTYPE html>
 <html>
