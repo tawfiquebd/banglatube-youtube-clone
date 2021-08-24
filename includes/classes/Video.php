@@ -26,27 +26,45 @@ class Video {
         return $this->sqlData["username"];
     }
 
-    public function getName() {
-        return $this->sqlData["first_name"] ." ". $this->sqlData["last_name"];
+    public function getId() {
+        return $this->sqlData["id"];
     }
 
-    public function getFirstName() {
-        return $this->sqlData["first_name"];
+    public function getUploadedBy() {
+        return $this->sqlData["uploadedBy"];
     }
 
-    public function getLastName() {
-        return $this->sqlData["last_name"];
+    public function getTitle() {
+        return $this->sqlData["title"];
     }
 
-    public function getEmail() {
-        return $this->sqlData["email"];
+    public function getDescription() {
+        return $this->sqlData["description"];
     }
 
-    public function getProfilePic() {
-        return $this->sqlData["profile_pic"];
+    public function getPrivacy() {
+        return $this->sqlData["privacy"];
     }
 
-    public function getSignUpDate() {
-        return $this->sqlData["signup_date"];
+    public function getFilePath() {
+        return $this->sqlData["filePath"];
     }
+
+    public function getCategory() {
+        return $this->sqlData["category"];
+    }
+
+    public function getUploadDate() {
+        return $this->sqlData["uploadDate"];
+    }
+
+    public function getViews() {
+        return $this->sqlData["views"];
+    }
+
+    public function getDuration() {
+        return $this->sqlData["duration"];
+    }
+
+
 }
