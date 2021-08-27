@@ -97,5 +97,9 @@ class Video {
 
     }
 
+    public function like() {
+        return "Burgears";
+    }
+
 
 }
