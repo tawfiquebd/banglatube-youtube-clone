@@ -13,6 +13,8 @@ $video->incrementViews();   // increment video count
 
 ?>
 
+<script src="assets/js/videoPlayerActions.js"></script>
+
 <div class="watchLeftColumn">
 
 <?php
