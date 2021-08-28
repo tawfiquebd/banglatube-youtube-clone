@@ -139,11 +139,66 @@ class Video {
         }
     }
 
+    public function dislike() {
+        $id = $this->getId();
+        $username = $this->userLoggedInObj->getUsername();
+
+        if($this->wasDislikedBy()){
+
+            $query = $this->con->prepare("DELETE FROM dislikes WHERE username = :username AND video_id = :video_id");
+            $query->bindParam(":username", $username);
+            $query->bindParam(":video_id", $id);
+
+            $query->execute();
+
+            $result = array(
+                "likes" => 0,
+                "dislikes" => -1
+            );
+            return json_encode($result);
+        }
+        else{
+
+            $query = $this->con->prepare("DELETE FROM likes WHERE username = :username AND video_id = :video_id");
+            $query->bindParam(":username", $username);
+            $query->bindParam(":video_id", $id);
+
+            $query->execute();
+            $count = $query->rowCount();
+
+
+            $query = $this->con->prepare("INSERT INTO dislikes(username, video_id) VALUES(:username, :video_id) ");
+            $query->bindParam(":username", $username);
+            $query->bindParam(":video_id", $id);
+
+            $query->execute();
+
+            $result = array(
+                "likes" => 0 - $count,
+                "dislikes" => 1
+            );
+            return json_encode($result);
+        }
+    }
+
     public function wasLikedBy() {
         $id = $this->getId();
         $username = $this->userLoggedInObj->getUsername();
 
         $query = $this->con->prepare("SELECT * FROM likes WHERE username = :username AND video_id = :video_id");
+        $query->bindParam(":username", $username);
+        $query->bindParam(":video_id", $id);
+
+        $query->execute();
+
+        return $query->rowCount() > 0;
+    }
+
+    public function wasDislikedBy() {
+        $id = $this->getId();
+        $username = $this->userLoggedInObj->getUsername();
+
+        $query = $this->con->prepare("SELECT * FROM dislikes WHERE username = :username AND video_id = :video_id");
         $query->bindParam(":username", $username);
         $query->bindParam(":video_id", $id);
 
