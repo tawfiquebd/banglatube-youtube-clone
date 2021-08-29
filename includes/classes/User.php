@@ -41,4 +41,25 @@ class User {
     public function getSignUpDate() {
         return $this->sqlData["signup_date"];
     }
+
+    public function isSubscribedTo($userTo) {
+        $username = $this->getUsername();
+
+        $query = $this->con->prepare("SELECT * FROM subscribers WHERE userTo=:userTo AND userFrom=:userFrom");
+        $query->bindParam(":userTo", $userTo);
+        $query->bindParam(":userFrom", $username);
+
+        $query->execute();
+        return $query->rowCount() > 0;
+    }
+
+    public function getSubscriberCount() {
+        $username = $this->getUsername();
+
+        $query = $this->con->prepare("SELECT * FROM subscribers WHERE userTo=:userTo");
+        $query->bindParam(":userTo", $username);
+
+        $query->execute();
+        return $query->rowCount();
+    }
 }
