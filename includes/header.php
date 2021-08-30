@@ -18,6 +18,7 @@ $userLoggedInObj = new User($con, $usernameLoggedIn);
 	<!-- JavaScript Bundle with Popper -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
 	<script type="text/javascript" src="assets/js/commonAction.js"></script>
+	<script type="text/javascript" src="assets/js/userAction.js"></script>
 
 </head>
 <body>
