@@ -284,6 +284,9 @@ a:hover{
 
 .secondaryInfo {
 	width: 80%;
+	border-bottom: 1px solid #dedede;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .secondaryInfo .topRow .profilePicture {
@@ -304,4 +307,43 @@ a:hover{
 	color: rgba(17, 17, 17, 0.6);
 	font-size: 13px;
 	font-weight: 400;
+}
+
+.secondaryInfo .descriptionContainer {
+	margin-left: 64px;
+	max-width: 615px;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 21px;
+}
+
+.secondaryInfo .topRow .button {
+	padding: 6px 15px;
+	cursor: pointer;
+	font-weight: 500;
+	border-radius: 2px;
+	border: none;
+	font-size: 14px;
+}
+
+.secondaryInfo .topRow .subscribeButtonContainer,
+.secondaryInfo .topRow .editVideoButtonContainer{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.subscribeButtonContainer .subscribe {
+	background-color: #f00;
+	color: #fff;
+}
+
+.subscribeButtonContainer .unsubscribe {
+	background-color: #eee;
+	color: rgba(17, 17, 17, 0.6);
+}
+
+.editVideoButtonContainer .edit {
+	background-color: #2692e6;
+	color: #fff;
 }
