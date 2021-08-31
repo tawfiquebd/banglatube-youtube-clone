@@ -24,7 +24,7 @@ class CommentSection {
 
         // Get comments html
 
-        return "<div class='commentSection'
+        return "<div class='commentSection'>
                     <div class='header'>
                         <span class='commentCount'>$numComments Comments</span>
                         
