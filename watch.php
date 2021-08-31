@@ -2,6 +2,7 @@
 require_once("includes/header.php");
 require_once("includes/classes/VideoPlayer.php");
 require_once("includes/classes/VideoInfoSection.php");
+require_once("includes/classes/CommentSection.php");
 
 if(!isset($_GET["id"])) {
     echo "No url passed into page";
@@ -23,6 +24,9 @@ $video->incrementViews();   // increment video count
 
     $videoInfo = new VideoInfoSection($con, $video, $userLoggedInObj); // passing video object and userloggedInObj object
     echo $videoInfo->create();
+
+    $commentSection = new CommentSection($con, $video, $userLoggedInObj);
+    echo $commentSection->create();
 ?>
 
 </div>
