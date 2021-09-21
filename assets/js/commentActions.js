@@ -5,7 +5,11 @@ function postComment(button, postedBy, videoId, replyTo, containerClass) {
     textarea.val("");
 
     if(commentText) {
-
+        // post ajax request
+        $.post("ajax/postComment.php", {commentText: commentText, postedBy: postedBy, videoId: videoId, responseTo: replyTo})
+            .done(function(data) {
+                alert(data);
+            });
     }
     else{
         alert("You can not insert empty comment!");
