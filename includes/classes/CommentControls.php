@@ -20,9 +20,12 @@ class CommentControls {
         $replySection = $this->createReplySection();
 
         return "<div class='controls'>
+                $replyButton
+                $likesCount
                 $likeButton
                 $dislikeButton
-                </div>";
+                </div>
+                $replySection";
     }
 
     private function createReplyButton() {
@@ -41,7 +44,24 @@ class CommentControls {
     }
 
     private function createReplySection() {
-        return "";
+        $postedBy = $this->userLoggedInObj->getUsername();
+        $videoId = $this->comment->getVideoId();
+        $commentId = $this->comment->getId();
+
+        $profileButton = ButtonProvider::createUserProfileButton($this->con, $postedBy);
+
+        $cancleButtonAction = "toggleReply(this)";
+        $cancleButton = ButtonProvider::createButton("Cancle", null, $cancleButtonAction, "cancleComment");
+
+        $postButtonAction = "postComment(this, \"$postedBy\", $videoId, $commentId, \"replySection\")";
+        $postButton = ButtonProvider::createButton("Reply", null, $postButtonAction, "postComment");
+
+        return "<div class='commentForm hidden' >
+                    $profileButton
+                    <textarea class='commentBodyClass' placeholder='Add a public comment'></textarea>
+                    $cancleButton
+                    $postButton
+                </div>";
     }
 
     private function createLikeButton() {
