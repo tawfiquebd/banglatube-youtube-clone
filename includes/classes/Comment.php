@@ -157,5 +157,73 @@ class Comment {
         return $numLikes - $numDislikes;
     }
 
+    public function like() {
+        $id = $this->getId();
+        $username = $this->userLoggedInObj->getUsername();
+
+        if($this->wasLikedBy()){
+            // If user has already liked it, then remove the like
+            $query = $this->con->prepare("DELETE FROM likes WHERE username = :username AND comment_id = :comment_id");
+            $query->bindParam(":username", $username);
+            $query->bindParam(":comment_id", $id);
+
+            $query->execute();
+
+            return -1;
+        }
+        else{
+            // If user had already disliked then remove it
+            $query = $this->con->prepare("DELETE FROM dislikes WHERE username = :username AND comment_id = :comment_id");
+            $query->bindParam(":username", $username);
+            $query->bindParam(":comment_id", $id);
+
+            $query->execute();
+            $count = $query->rowCount();
+
+            // If there is not like then Insert like
+            $query = $this->con->prepare("INSERT INTO likes(username, comment_id) VALUES(:username, :comment_id) ");
+            $query->bindParam(":username", $username);
+            $query->bindParam(":comment_id", $id);
+
+            $query->execute();
+
+            return 1 + $count;
+        }
+    }
+
+    public function dislike() {
+        $id = $this->getId();
+        $username = $this->userLoggedInObj->getUsername();
+
+        if($this->wasDislikedBy()){
+
+            $query = $this->con->prepare("DELETE FROM dislikes WHERE username = :username AND comment_id = :comment_id");
+            $query->bindParam(":username", $username);
+            $query->bindParam(":comment_id", $id);
+
+            $query->execute();
+
+            return 1;
+        }
+        else{
+
+            $query = $this->con->prepare("DELETE FROM likes WHERE username = :username AND comment_id = :comment_id");
+            $query->bindParam(":username", $username);
+            $query->bindParam(":comment_id", $id);
+
+            $query->execute();
+            $count = $query->rowCount();
+
+
+            $query = $this->con->prepare("INSERT INTO dislikes(username, comment_id) VALUES(:username, :comment_id) ");
+            $query->bindParam(":username", $username);
+            $query->bindParam(":comment_id", $id);
+
+            $query->execute();
+
+            return -1 - $count;
+        }
+    }
+
 }
 
