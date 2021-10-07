@@ -36,7 +36,7 @@ class Comment {
 
         if($numResponses > 0) {
             $viewRepliesText = "<span class='repliesSection viewReplies' onclick='getReplies($id, this, $videoId)'>
-                                    View al $numResponses replies
+                                    View all $numResponses replies
                                 </span>";
         }
         else {
@@ -223,6 +223,24 @@ class Comment {
 
             return -1 - $count;
         }
+    }
+
+    public function getReplies() {
+        $id = $this->getId();
+        $query = $this->con->prepare("SELECT * FROM comments WHERE response_to = :comment_id ORDER BY date_posted ASC");
+        $query->bindParam(":comment_id", $id);
+
+        $query->execute();
+
+        $comments = "";
+        $videoId = $this->getVideoId();
+
+        while($row = $query->fetch(PDO::FETCH_ASSOC)){
+            $comment = new Comment($this->con, $row, $this->userLoggedInObj, $videoId);
+            $comments .= $comment->create();
+        }
+
+        return $comments;
     }
 
 }
