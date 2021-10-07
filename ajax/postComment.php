@@ -5,6 +5,8 @@ require_once("../includes/classes/Comment.php");
 
 if(isset($_POST['commentText']) && isset($_POST['postedBy']) && isset($_POST['videoId'])) {
 
+    $userLoggedInObj = new User($con, $_SESSION["userLoggedIn"]);
+
     $postedBy   = $_POST['postedBy'];
     $videoId    = $_POST['videoId'];
     $responseTo = isset($_POST['responseTo']) ? $_POST['responseTo'] : 0;
@@ -21,11 +23,10 @@ if(isset($_POST['commentText']) && isset($_POST['postedBy']) && isset($_POST['vi
 
     $lastId = $con->lastInsertId(); // get last insert id
 
-    $userLoggedInObj = new User($con, $_SESSION["userLoggedIn"]);
     $newComment = new Comment($con, $lastId, $userLoggedInObj, $videoId);
 
     echo $newComment->create();
 }
 else{
-    echo "One or more parameters are not passed into subscribe.php file";
+    echo "One or more parameters are not passed into file";
 }

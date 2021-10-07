@@ -30,7 +30,7 @@ class Comment {
         $timespan = $this->time_elapsed_string($this->sqlData["date_posted"]);
 
         $commentControls = new CommentControls($this->con, $this, $this->userLoggedInObj);
-        $commentControls = $commentControls->create();
+        $commentControl = $commentControls->create();
 
         $numResponses = $this->getNumberOfReplies();
 
@@ -60,7 +60,7 @@ class Comment {
                             </div>
                         </div>
                     </div>
-                    $commentControls
+                    $commentControl
                     $viewRepliesText
                 </div>";
     }

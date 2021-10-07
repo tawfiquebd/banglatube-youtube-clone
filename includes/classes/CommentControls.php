@@ -51,9 +51,9 @@ class CommentControls {
         $profileButton = ButtonProvider::createUserProfileButton($this->con, $postedBy);
 
         $cancleButtonAction = "toggleReply(this)";
-        $cancleButton = ButtonProvider::createButton("Cancle", null, $cancleButtonAction, "cancleComment");
+        $cancleButton = ButtonProvider::createButton("Cancel", null, $cancleButtonAction, "cancleComment");
 
-        $postButtonAction = "postComment(this, \"$postedBy\", $videoId, $commentId, \"replySection\")";
+        $postButtonAction = "postComment(this, \"$postedBy\", $videoId, $commentId, \"repliesSection\")";
         $postButton = ButtonProvider::createButton("Reply", null, $postButtonAction, "postComment");
 
         return "<div class='commentForm hidden' >
