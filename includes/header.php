@@ -4,6 +4,7 @@ require_once("includes/classes/ButtonProvider.php");
 require_once("includes/classes/User.php");
 require_once("includes/classes/Video.php");
 require_once("includes/classes/VideoGrid.php");
+require_once("includes/classes/VideoGridItem.php");
 
 $usernameLoggedIn = isset($_SESSION['userLoggedIn']) ? $_SESSION['userLoggedIn'] : "";
 $userLoggedInObj = new User($con, $usernameLoggedIn);
