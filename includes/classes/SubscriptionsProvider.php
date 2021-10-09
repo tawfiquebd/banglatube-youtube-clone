@@ -41,7 +41,7 @@ class SubscriptionsProvider {
 
             foreach ($subscriptions as $sub) {
                 $subUsername = $sub->getUsername();
-                $videoQuery->bindParam($i, $subUsername);
+                $videoQuery->bindValue($i, $subUsername);
                 $i++;
             }
 

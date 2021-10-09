@@ -46,6 +46,13 @@ class VideoGrid {
     }
 
     public function generateItemsFromVideos($videos) {
+        $elementsHtml = "";
+
+        foreach ($videos as $video) {
+            $item = new VideoGridItem($video, $this->largeMode);
+            $elementsHtml .= $item->create();
+        }
+        return $elementsHtml;
 
     }
 
