@@ -50,6 +50,15 @@ class VideoGrid {
     }
 
     public function createGridHeader($title, $showFilter) {
-        return "";
+        $filter = "";
+
+        // create filter
+
+        return "<div class='videoGridHeader'>
+                        <div class='left'>
+                            $title
+                        </div>
+                        $filter 
+                    </div>";
     }
 }
