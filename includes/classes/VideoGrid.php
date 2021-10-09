@@ -19,7 +19,7 @@ class VideoGrid {
             $gridItems = $this->generateItemsFromVideos($videos);
         }
 
-        $headers = "" ;
+        $header = "" ;
 
         if($title != null) {
             $header = $this->createGridHeader($title, $showFilter);
