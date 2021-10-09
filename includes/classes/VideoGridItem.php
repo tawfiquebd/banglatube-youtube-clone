@@ -34,7 +34,32 @@ class VideoGridItem {
     }
 
     private function createDetails() {
-        return "";
+        $title = $this->video->getTitle();
+        $username = $this->video->getUploadedBy();
+        $views = $this->video->getViews();
+        $description = $this->createDescription();
+        $timestamp = $this->video->getTimeStamp();
+
+        return "<div class='details'>
+                    <h3 class='title'>$title</h3>
+                    <span class='username'>$username</span>
+                    <div class='stats'>
+                        <span class='viewCount'>$views views - </span>
+                        <span class='timeStamp'>$timestamp</span>
+                    </div>
+                    $description
+                </div>";
+    }
+
+    private function createDescription() {
+        if(!$this->largeMode) {
+            return "";
+        }
+        else{
+            $description = $this->video->getDescription();
+            $description = (strlen($description) > 350) ? substr($description, 0, 347) ."..." : $description;
+            return "<span class='description'>$description</span>";
+        }
     }
 
 }
