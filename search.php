@@ -1,5 +1,6 @@
 <?php
 require_once ('includes/header.php');
+require_once ('includes/classes/SearchResultsProvider.php');
 ?>
 
 <?php
@@ -17,6 +18,7 @@ if(!isset($_GET["orderBy"]) || $_GET["orderBy"] == "views") {
 else {
     $orderBy = "uploadDate";
 }
+
 
 ?>
 
