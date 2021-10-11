@@ -19,7 +19,7 @@ class User {
     }
 
     public function getUsername() {
-        return $this->sqlData["username"];
+        return isset($this->sqlData["username"]) ?  $this->sqlData["username"] : "" ;
     }
 
     public function getName() {

@@ -511,6 +511,7 @@ a:hover{
 .videoGridItem {
 	margin-bottom: 24px;
 	height: 200px;
+	margin-right: 8px;
 }
 
 .videoGridItem .thumbnail {
@@ -649,4 +650,9 @@ a:hover{
 
 .videoGridHeader a:last-child:after {
 	content: '';
+}
+
+.signInLink {
+	color: #f00;
+	margin-left: 15px;
 }
