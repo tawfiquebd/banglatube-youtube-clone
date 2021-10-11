@@ -657,12 +657,9 @@ a:hover{
 	margin-left: 15px;
 }
 
-#sideNavContainer .navigationItems {
-	overflow-y: auto;
-}
-
 #sideNavContainer .navigationItem {
-	height: 40px;
+	/*height: 40px;*/
+	overflow-y: auto;
 }
 
 #sideNavContainer .navigationItem img {
@@ -670,20 +667,28 @@ a:hover{
 	margin-right: 27px;
 }
 
-#sideNavContainer .navigationItem span {
-	flex: 1;
-	color: #111;
-	font-size: 14px;
-}
+/*#sideNavContainer .navigationItem span {*/
+/*	flex: 1;*/
+/*}*/
 
 #sideNavContainer .navigationItem a {
 	flex: 1;
 	display: flex;
 	align-items: center;
 	padding: 10px 24px;
+	color: #111;
+	font-size: 14px;
 }
 
 #sideNavContainer .navigationItem a:hover {
 	background-color: rgba(0, 0, 0, 0.04);
 }
 
+#sideNavContainer .heading {
+	font-size: 14px;
+	font-weight: 500;
+	color: rgba(17,17,17,0.6);
+	padding: 10px 24px 0;
+	border-top: 1px solid #ededed;
+	display: block;
+}
