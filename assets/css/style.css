@@ -780,6 +780,10 @@ a:hover{
 	border-top: none;
 }
 
+.nav.nav-tabs {
+	margin-top: 25px;
+}
+
 .nav-item a {
 	color: rgba(17,17,17,0.6);
 }
