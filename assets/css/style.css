@@ -752,3 +752,23 @@ a:hover{
 	font-size: 14px;
 	color: rgba(17,17,17, 0.6);
 }
+
+.profileHeader .buttonContainer {
+	flex: 1;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.profileHeader .buttonContainer .buttonItem {
+	display: flex;
+	align-items: center;
+}
+
+.profileHeader .buttonContainer .buttonItem button {
+	padding: 10px 15px;
+	font-size: 14px;
+	font-weight: 500;
+	border: none;
+	border-radius: 2px;
+	cursor: pointer;
+}
