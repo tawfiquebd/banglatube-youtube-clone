@@ -43,6 +43,19 @@ class Account {
         }
     }
 
+    public function updateDetails($fn, $ln, $em, $un) {
+        $this->validateFirstName($fn);
+        $this->validateLastName($ln);
+        $this->validateNewEmail($em, $un);
+
+        if(empty($this->errorArray)) {
+            // update
+        }
+        else {
+            return false;
+        }
+    }
+
     public function insertUserDetails($firstName, $lastName, $username, $email, $password) {
 
         $password = hash("sha512", $password);  // password hashing
@@ -102,6 +115,23 @@ class Account {
 
         $query = $this->con->prepare("SELECT email FROM users WHERE email=:email");
         $query->bindParam(":email", $email);
+        $query->execute();
+
+        if($query->rowCount() != 0) {
+            array_push($this->errorArray, Constants::$emailTaken);
+        }
+    }
+
+    private function validateNewEmail($em, $un){
+
+        if(!filter_var($em, FILTER_VALIDATE_EMAIL)) {
+            array_push($this->errorArray, Constants::$emailInvalid);
+            return;
+        }
+
+        $query = $this->con->prepare("SELECT email FROM users WHERE email=:email AND username != :un");
+        $query->bindParam(":em", $em);
+        $query->bindParam(":un", $un);
         $query->execute();
 
         if($query->rowCount() != 0) {
