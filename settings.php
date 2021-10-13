@@ -16,7 +16,13 @@ $formProvider = new SettingsFormProvider();
 <div class="settingsContainer column">
     <div class="formSection">
         <?php
-            echo $formProvider->createUserDetailsForm();
+        echo $formProvider->createUserDetailsForm();
+        ?>
+    </div>
+
+    <div class="formSection">
+        <?php
+        echo $formProvider->createPasswordForm();
         ?>
     </div>
 </div>
