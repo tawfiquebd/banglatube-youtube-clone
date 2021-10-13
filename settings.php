@@ -18,7 +18,7 @@ if(isset($_POST['saveDetailsButton'])) {
 
     $firstName = FormSanitizer::sanitizeFormString($_POST["firstName"]);
     $lastName = FormSanitizer::sanitizeFormString($_POST["lastName"]);
-    $email = FormSanitizer::sanitizeFormString($_POST["email"]);
+    $email = FormSanitizer::sanitizeFormEmail($_POST["email"]);
 
     if($account->updateDetails($firstName, $lastName, $email, $userLoggedInObj->getUsername())) {
         $detailsMessage = "<div class='alert alert-success'>
