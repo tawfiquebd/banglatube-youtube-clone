@@ -809,3 +809,32 @@ a:hover{
 	margin: 0 auto;
 }
 
+.editVideoContainer {
+	display: flex;
+	flex-direction: column;
+}
+
+.editVideoContainer .topSection {
+	display: flex;
+}
+
+.topSection .videoPlayer {
+	max-height: 300px;
+	flex: 1;
+}
+
+.editVideoContainer .topSection .thumbnailItemsContainer {
+	display: flex;
+	flex-direction: column;
+	margin: 0 10px;
+	width: 210px;
+}
+
+.editVideoContainer .topSection .thumbnailItemsContainer .thumbnailItem {
+	margin-bottom: 10px;
+	padding: 2px;
+}
+
+.editVideoContainer .topSection .thumbnailItemsContainer .thumbnailItem.selected {
+	border: 3px solid #828282;
+}
