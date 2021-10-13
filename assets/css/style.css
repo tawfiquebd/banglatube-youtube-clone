@@ -791,3 +791,9 @@ a:hover{
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
 	color: rgba(17,17,17,0.8);
 }
+
+.channelContent .section .values {
+	color: rgba(17, 17, 17, 0.6);
+	display: flex;
+	flex-direction: column;
+}
