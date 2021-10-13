@@ -75,7 +75,8 @@ class ProfileData {
     }
 
     private function getSignUpDate() {
-        return "Test 2";
+        $date = $this->profileUserObj->getSignUpDate();
+        return date('F jS, Y', strtotime($date));
     }
 
 }
