@@ -21,6 +21,8 @@ if($video->getUploadedBy() != $userLoggedInObj->getUsername()) {
     exit();
 }
 
+$detailsMessage = "";
+
 if(isset($_POST['saveButton'])) {
     $videoData = new VideoUploadData(
         null,
@@ -31,10 +33,12 @@ if(isset($_POST['saveButton'])) {
         $userLoggedInObj->getUsername()
     );
 
-    if($videoData->updateDetails($con, $videoId)) {
+    if($videoData->updateDetails($con, $video->getId())) {
         $detailsMessage = "<div class='alert alert-success'>
                                 <strong>Success!</strong> Details updated successfully!
                             </div>";
+
+        $video = new Video($con, $_GET['videoId'], $userLoggedInObj);
     }
     else {
         $detailsMessage = "<div class='alert alert-danger'>
@@ -50,6 +54,10 @@ if(isset($_POST['saveButton'])) {
 
 
 <div class="editVideoContainer column">
+    <div class="message">
+        <?php echo $detailsMessage ?>
+    </div>
+
     <div class="topSection">
         <?php
             $videoPlayer = new VideoPlayer($video);
