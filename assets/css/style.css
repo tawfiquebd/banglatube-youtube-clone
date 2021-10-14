@@ -838,3 +838,8 @@ a:hover{
 .editVideoContainer .topSection .thumbnailItemsContainer .thumbnailItem.selected {
 	border: 3px solid #828282;
 }
+
+.bottomSection {
+	margin-top: 30px;
+}
+
